@@ -322,3 +322,5 @@ whole device, which is the behaviour Roku's guidelines require.
 
 **The channel vanished from the home screen** — see
 [Does it stay installed?](#does-it-stay-installed) above; re-run `deploy.ps1`.
+
+(YES I GOT LAZY AND JUST ASKED CLAUDE TO MAKE THIS, PLEASE DIRECT COMPLAINTS TO roxy@lakecityquietpills.net)
