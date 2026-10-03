@@ -1,9 +1,9 @@
 # Shown on the Roku home screen tile.
-title=Ember's Pony Archive
+title=Floof's Pony Archive
 
 major_version=1
-minor_version=1
-build_version=00002
+minor_version=2
+build_version=00003
 
 # App icon. Both are required; 540x405 and 290x218 respectively.
 # mm_icon_focus_sd and mm_icon_side_* are deprecated and intentionally omitted.

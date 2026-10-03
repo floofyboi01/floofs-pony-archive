@@ -1,4 +1,4 @@
-' Ember's Pony Archive - Roku channel entry point.
+' Floof's Pony Archive - Roku channel entry point.
 '
 ' Streams MLP:FiM and MLP:EqG directly from the static MP4s backing
 ' fim.heartshine.gay / eqg.heartshine.gay.

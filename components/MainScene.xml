@@ -20,7 +20,7 @@
             <Rectangle width="1920" height="1080" color="0x14102AFF" />
             <Rectangle width="1920" height="6" color="0xBAF4C2FF" translation="[0,0]" />
 
-            <Label id="titleLabel" text="Ember's Pony Archive" translation="[90,40]"
+            <Label id="titleLabel" text="Floof's Pony Archive" translation="[90,40]"
                    font="font:LargeBoldSystemFont" color="0xEDE9FBFF" />
 
             <Label id="statusLabel" text="Loading archive..." translation="[94,112]"

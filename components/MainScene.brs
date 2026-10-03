@@ -1,4 +1,4 @@
-' Browse + playback logic for Ember's Pony Archive.
+' Browse + playback logic for Floof's Pony Archive.
 '
 ' Navigation model: three columns (archive / season / episode). Left and Right
 ' move between columns, Up and Down are owned by the focused list, OK on an

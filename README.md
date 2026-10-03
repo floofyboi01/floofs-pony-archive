@@ -1,4 +1,4 @@
-﻿# Ember's Pony Archive â€” Roku channel
+# Floof's Pony Archive — Roku channel
 
 A sideloaded Roku channel that plays **My Little Pony: Friendship is Magic** and
 **Equestria Girls** straight from the static MP4s behind
@@ -43,18 +43,18 @@ Probed directly from the MP4 container before writing any code:
 | Container | `mp42`, `Accept-Ranges: bytes` |
 | DRM | none |
 
-That is the single most broadly supported combination on the platform â€” it
+That is the single most broadly supported combination on the platform — it
 plays on every Roku model ever shipped. FiM's files put `moov` *after* `mdat`
 (not fast-start), so startup costs one extra range request; harmless.
 
 ### The one real snag: subtitles
 
 The archive publishes WebVTT. Per Roku's own docs, **Roku only accepts WebVTT
-embedded in HLS or DASH manifests â€” never as a sideloaded file alongside a
+embedded in HLS or DASH manifests — never as a sideloaded file alongside a
 progressive MP4.** Sideloaded captions must be SRT, TTML, or DFXP.
 
 So `SubtitleTask` downloads the `.vtt`, rewrites it as SRT in `tmp:/`, and
-hands the player a local path. The transform fixes the `.` â†’ `,` decimal
+hands the player a local path. The transform fixes the `.` → `,` decimal
 separator, expands `MM:SS.mmm` to `HH:MM:SS,mmm`, adds the sequential cue
 numbers SRT requires, strips WebVTT-only markup (`<c.loud>`, `<v Name>`) while
 keeping `<i>`, and drops cue settings and cue identifiers.
@@ -71,10 +71,10 @@ Some shorts ship stub tracks reading `[Subtitles under construction]`;
 
 On the Roku remote, from the home screen:
 
-> **Home Ã—3, Up Ã—2, Right, Left, Right, Left, Right**
+> **Home ×3, Up ×2, Right, Left, Right, Left, Right**
 
 Then *Enable installer and restart*, accept the agreement, and set a password.
-After the reboot, find the IP under **Settings â†’ Network â†’ About**.
+After the reboot, find the IP under **Settings → Network → About**.
 
 ## Deploy
 
@@ -119,7 +119,7 @@ from the end of a season into the start of the next (S01E26 to S02E01). It
 stops at the end of an archive rather than crossing from FiM into EqG, and
 each new episode fetches and converts its own subtitles on the way in.
 
-Only a natural end triggers it â€” pressing Back always just exits. Turn it off
+Only a natural end triggers it — pressing Back always just exits. Turn it off
 under `*` if you would rather not.
 
 ## Layout
@@ -180,11 +180,11 @@ re-run it:
 node tools\make-images.js
 ```
 
-The palette and shape live at the top of `tools/make-images.js` â€”
+The palette and shape live at the top of `tools/make-images.js` —
 `BG_TOP`, `BG_BOTTOM`, `MINT`, `MAGENTA`, and `STAR_POINTS` (change `6` to `5`
 for a five-pointed star, `STAR_INNER` for how fat the points are).
 
-**If you hand-draw your own icons, do not run `make-images.js` again** â€” it
+**If you hand-draw your own icons, do not run `make-images.js` again** — it
 overwrites every file it manages. `deploy.ps1` only invokes it when an image
 referenced by the manifest is missing, so custom art is safe during a normal
 deploy.
@@ -224,13 +224,13 @@ a matching rule in `tools/validate.js`, so `node tools\validate.js` catches
 them before a deploy instead of a blank screen catching them after.
 
 1. **`rem` and `pos` are reserved words.** `rem` is BASIC's comment keyword, so
-   `rem = x` silently swallows the rest of the line â€” and the compiler reports
+   `rem = x` silently swallows the rest of the line — and the compiler reports
    the syntax error on a *later* line, which sends you looking in the wrong
    place.
 2. **`source/` is not global to components.** Scripts under `source/` are in
    scope for the main thread only. Every component must `<script>` in the
    helpers it calls, or it dies at runtime with *"Function is not defined in
-   component's namespace (&h91)"* â€” and only on the code path that runs.
+   component's namespace (&h91)"* — and only on the code path that runs.
 3. **A `<Font>` node's `uri` only accepts a packaged font file.**
    `font:SystemFontFile` happens to work, `font:SystemBoldFontFile` does not,
    and the failure mode is text that renders completely invisibly rather than
@@ -243,8 +243,8 @@ them before a deploy instead of a blank screen catching them after.
 ### Driving the device from a PC
 
 Roku OS 14+ rejects unauthenticated ECP *input* with HTTP 403 while still
-allowing `/launch` and `/query`. To script keypresses, set **Settings â†’ System
-â†’ Advanced system settings â†’ Control by mobile apps â†’ Network access** to
+allowing `/launch` and `/query`. To script keypresses, set **Settings → System
+→ Advanced system settings → Control by mobile apps → Network access** to
 *Permissive*.
 
 Useful during development:
@@ -259,7 +259,7 @@ curl.exe -s --digest -u "rokudev:PASSWORD" -F "mysubmit=Screenshot" -F "archive=
 curl.exe -s --digest -u "rokudev:PASSWORD" "http://192.168.1.42/pkgs/dev.jpg" -o shot.jpg
 ```
 
-Note that a dev screenshot captures the graphics plane only â€” during playback
+Note that a dev screenshot captures the graphics plane only — during playback
 the video itself reads as black, though rendered subtitles do show up.
 
 ## Verified on device
@@ -282,7 +282,7 @@ Roku TV 4 Series-40 (K207X), Roku OS 15.3.4:
 
 ### Does it stay installed?
 
-Yes. It is a real installed app â€” it shows up in `/query/apps` next to Netflix
+Yes. It is a real installed app — it shows up in `/query/apps` next to Netflix
 and lives on the home screen (sideloaded apps land in the bottom row). It
 survives reboots and power cycles, and there is **no time limit**: Roku has no
 equivalent of iOS's 7-day sideloading expiry.
@@ -291,7 +291,7 @@ Four things remove it, all of them deliberate:
 
 | Cause | Effect |
 |---|---|
-| Sideloading a different app | Replaces it â€” there is only one dev slot |
+| Sideloading a different app | Replaces it — there is only one dev slot |
 | Turning off developer mode | Removes it |
 | Factory reset | Removes it |
 | Some major Roku OS updates | Occasionally clears the dev slot |
@@ -305,20 +305,20 @@ reinstall, so resume points and settings come back with it:
 
 ## Troubleshooting
 
-**Channel installs but shows a blank screen** â€” `telnet <ip> 8085` and look for
+**Channel installs but shows a blank screen** — `telnet <ip> 8085` and look for
 a compile error naming a file and line.
 
-**"No Roku developer web server answered"** â€” dev mode needs the reboot to take
+**"No Roku developer web server answered"** — dev mode needs the reboot to take
 effect, the IP may have changed via DHCP, and the PC must be on the same
 network (guest/IoT VLANs block this).
 
-**Video fails instantly** â€” confirm the URL from a browser. The archive
+**Video fails instantly** — confirm the URL from a browser. The archive
 occasionally reshuffles files between `static`, `static2`, and `static3`, and
 `db.json` is the source of truth for which host holds what.
 
-**Subtitles never appear** â€” they are off by default. Turn them on with `*`.
+**Subtitles never appear** — they are off by default. Turn them on with `*`.
 Roku's caption mode is a *system* setting, so toggling it here affects the
 whole device, which is the behaviour Roku's guidelines require.
 
-**The channel vanished from the home screen** â€” see
+**The channel vanished from the home screen** — see
 [Does it stay installed?](#does-it-stay-installed) above; re-run `deploy.ps1`.

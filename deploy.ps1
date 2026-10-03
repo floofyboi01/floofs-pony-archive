@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Packages and sideloads Ember's Pony Archive to a Roku in developer mode.
+    Packages and sideloads Floof's Pony Archive to a Roku in developer mode.
 
 .EXAMPLE
     .\deploy.ps1 -RokuIp 192.168.1.42 -Password rokudev
