@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="DbTask" extends="Task">
+    <interface>
+        <!-- Array of { key, host, label } describing which archives to load. -->
+        <field id="seriesSpec" type="array" />
+        <!-- { ok: Boolean, message: String, series: [ ... ] } -->
+        <field id="result" type="assocarray" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/Util.brs" />
+    <script type="text/brightscript" uri="pkg:/components/DbTask.brs" />
+</component>

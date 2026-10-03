@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene">
+    <interface>
+        <field id="deepLinkContentId" type="string" alwaysNotify="true" />
+    </interface>
+
+    <!-- source/ is only in scope for the main thread; every component must
+         include the shared helpers it uses explicitly. -->
+    <script type="text/brightscript" uri="pkg:/source/Util.brs" />
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+
+    <!-- Fonts are given as the documented "font:<Name>SystemFont" shorthand.
+         A <Font> node's uri only accepts a .ttf/.otf shipped in the package,
+         so font:SystemBoldFontFile silently renders nothing. -->
+
+    <children>
+
+        <!-- ============ Browse ============ -->
+        <Group id="browseGroup">
+            <Rectangle width="1920" height="1080" color="0x14102AFF" />
+            <Rectangle width="1920" height="6" color="0xBAF4C2FF" translation="[0,0]" />
+
+            <Label id="titleLabel" text="Ember's Pony Archive" translation="[90,40]"
+                   font="font:LargeBoldSystemFont" color="0xEDE9FBFF" />
+
+            <Label id="statusLabel" text="Loading archive..." translation="[94,112]"
+                   width="1740" color="0xBAF4C2FF" font="font:MediumSystemFont" />
+
+            <!-- Column headings -->
+            <Label text="ARCHIVE" translation="[94,186]" color="0x7A6FA8FF"
+                   font="font:SmallBoldSystemFont" />
+            <Label text="SEASON" translation="[514,186]" color="0x7A6FA8FF"
+                   font="font:SmallBoldSystemFont" />
+            <Label id="episodeHeading" text="EPISODE" translation="[954,186]"
+                   color="0x7A6FA8FF" font="font:SmallBoldSystemFont" />
+
+            <LabelList id="seriesList" translation="[90,226]"
+                       itemSize="[390,58]" numRows="3"
+                       font="font:MediumSystemFont"
+                       focusedFont="font:MediumBoldSystemFont"
+                       color="0x9A8FC4FF" focusedColor="0x14102AFF"
+                       focusBitmapBlendColor="0xBAF4C2FF"
+                       vertFocusAnimationStyle="fixedFocusWrap" />
+
+            <LabelList id="seasonList" translation="[510,226]"
+                       itemSize="[400,58]" numRows="11"
+                       font="font:MediumSystemFont"
+                       focusedFont="font:MediumBoldSystemFont"
+                       color="0x9A8FC4FF" focusedColor="0x14102AFF"
+                       focusBitmapBlendColor="0xBAF4C2FF"
+                       vertFocusAnimationStyle="fixedFocusWrap" />
+
+            <LabelList id="episodeList" translation="[950,226]"
+                       itemSize="[880,58]" numRows="11"
+                       font="font:MediumSystemFont"
+                       focusedFont="font:MediumBoldSystemFont"
+                       color="0x9A8FC4FF" focusedColor="0x14102AFF"
+                       focusBitmapBlendColor="0xBAF4C2FF"
+                       vertFocusAnimationStyle="fixedFocusWrap" />
+
+            <!-- Footer -->
+            <Rectangle width="1740" height="2" color="0x2A2350FF" translation="[90,924]" />
+
+            <Label id="infoLabel" text="" translation="[94,946]" width="1740"
+                   color="0xEDE9FBFF" font="font:MediumBoldSystemFont" />
+
+            <Label id="hintLabel" text="" translation="[94,1000]" width="1740"
+                   color="0x7A6FA8FF" font="font:SmallSystemFont" />
+        </Group>
+
+        <!-- ============ Video ============ -->
+        <Video id="videoPlayer" visible="false" width="1920" height="1080" translation="[0,0]" />
+
+        <!-- ============ Options overlay ============ -->
+        <Group id="optionsGroup" visible="false">
+            <Rectangle width="1920" height="1080" color="0x000000CC" />
+            <Rectangle width="860" height="660" color="0x1C1738FF" translation="[530,210]" />
+            <Rectangle width="860" height="5" color="0xBAF4C2FF" translation="[530,210]" />
+
+            <Label id="optionsTitle" text="Options" translation="[570,246]"
+                   color="0xEDE9FBFF" font="font:LargeBoldSystemFont" />
+
+            <LabelList id="optionsList" translation="[560,340]"
+                       itemSize="[800,58]" numRows="6"
+                       font="font:MediumSystemFont"
+                       focusedFont="font:MediumBoldSystemFont"
+                       color="0x9A8FC4FF" focusedColor="0x14102AFF"
+                       focusBitmapBlendColor="0xBAF4C2FF"
+                       vertFocusAnimationStyle="fixedFocusWrap" />
+
+            <Label id="optionsHint" text="OK to change        BACK to close"
+                   translation="[570,800]" color="0x7A6FA8FF"
+                   font="font:SmallSystemFont" />
+        </Group>
+
+        <!-- ============ Toast / error ============ -->
+        <Group id="toastGroup" visible="false">
+            <Rectangle width="1200" height="92" color="0x2A1230FF" translation="[360,800]" />
+            <Rectangle width="6" height="92" color="0xFF6B8AFF" translation="[360,800]" />
+            <Label id="toastLabel" text="" translation="[392,828]" width="1140"
+                   color="0xEDE9FBFF" font="font:MediumSystemFont" />
+        </Group>
+
+    </children>
+</component>

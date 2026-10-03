@@ -1,0 +1,20 @@
+# Build output
+dist/
+*.zip
+*.pkg
+
+# Dev artefacts
+*.log
+shot*.jpg
+screenshot*.jpg
+dev.jpg
+
+# Node (only used by the tools/ scripts, which have no dependencies)
+node_modules/
+package-lock.json
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

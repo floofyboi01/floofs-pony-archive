@@ -1,0 +1,7 @@
+# Keep line endings deterministic. Roku's manifest parser requires every
+# name=value line to end with a newline, so avoid surprises across clones.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.zip binary
